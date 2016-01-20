@@ -1,0 +1,1 @@
+function hello(){console.log("dummy1.js - Hello")}function hello(){console.log("dummy2.js - World")}

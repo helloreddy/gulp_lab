@@ -1,0 +1,25 @@
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var minifycss = require('gulp-minify-css');
+
+gulp.task('uglify', function(){
+  return gulp.src('public/src/*.js')
+    .pipe(concat('main.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/dist'));
+});
+
+gulp.task('minifycss', function(){
+  return gulp.src('public/src/*.css')
+    .pipe(concat('main.css'))
+    .pipe(minifycss())
+    .pipe(gulp.dest('public/dist'));
+});
+
+gulp.task('watch', function(){
+  gulp.watch('public/src/*.js', ['uglify']);
+  gulp.watch('public/src/*.css', ['minifycss']);
+})
+
+gulp.task('default', ['uglify', 'minifycss', 'watch']);
